@@ -14,6 +14,6 @@ public class EventResponse {
     private Long eventId;
     private String eventName;
     private LocalDateTime eventDate;
-    private List<VenueResponse> venues;
+    private VenueResponse venues;
     private List<AttendeeResponse> attendees;
 }

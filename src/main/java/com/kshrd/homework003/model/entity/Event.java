@@ -1,7 +1,6 @@
 package com.kshrd.homework003.model.entity;
 
 import com.kshrd.homework003.model.response.AttendeeResponse;
-import com.kshrd.homework003.model.response.VenueResponse;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,6 +15,6 @@ public class Event {
     private Long eventId;
     private String eventName;
     private LocalDateTime eventDate;
-    private List<VenueResponse> venues;
-    private List<AttendeeResponse> attendees;
+    private Venue venues;
+    private List<Attendee> attendees;
 }

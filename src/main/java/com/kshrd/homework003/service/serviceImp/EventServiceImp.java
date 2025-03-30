@@ -74,6 +74,9 @@ public class EventServiceImp implements EventService {
 
     @Override
     public EventResponse updateEventById(Long eventId, EventRequest eventRequest) {
+        if (venueService.getVenueById(eventRequest.getVenuesId()) == null) {
+            throw new NotFoundException("Venue with id " + eventRequest.getVenuesId() + " not found");
+        }
         Event isUpdated = eventRepository.updateEventById(eventId,eventRequest);
         if (isUpdated == null) {
             throw new NotFoundException("Event with id " + eventId + " not found");
@@ -83,9 +86,7 @@ public class EventServiceImp implements EventService {
                 throw new NotFoundException("Attendee with id " + attendeesId + " not found");
             }
         });
-        if (venueService.getVenueById(eventRequest.getVenuesId()) == null) {
-            throw new NotFoundException("Venue with id " + eventRequest.getVenuesId() + " not found");
-        }
+
         eventAttendeeRepository.deleteAttendeeIdAndEventId(eventId);
         eventRequest.getAttendeesId().forEach(attendeesId -> eventAttendeeRepository.insertAttendeeIdAndEventId(eventId, attendeesId));
 

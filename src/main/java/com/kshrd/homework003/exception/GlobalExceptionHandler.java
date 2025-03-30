@@ -72,6 +72,7 @@ public class GlobalExceptionHandler {
                     }
                 }
             } else {
+                // Handle other parameter errors
                 for (var messageError : parameterError.getResolvableErrors()) {
                     errors.put(paramName, messageError.getDefaultMessage());
                 }

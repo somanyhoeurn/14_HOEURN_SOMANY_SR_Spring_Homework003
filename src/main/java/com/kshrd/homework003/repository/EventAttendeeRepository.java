@@ -1,5 +1,6 @@
 package com.kshrd.homework003.repository;
 
+import com.kshrd.homework003.model.entity.Attendee;
 import com.kshrd.homework003.model.response.AttendeeResponse;
 import org.apache.ibatis.annotations.*;
 
@@ -17,7 +18,7 @@ public interface EventAttendeeRepository {
                 JOIN attendees a ON ea.attendee_id = a.attendee_id
                 WHERE event_id = #{eventId}
             """)
-    List<AttendeeResponse> getAllAttendeeByEventId(Long eventId);
+    List<Attendee> getAllAttendeeByEventId(Long eventId);
 
     @ResultMap("eventAttendeeMapper")
     @Insert("""
